@@ -1,0 +1,49 @@
+.left-sidebar {
+    height: 83.8vh;
+    width: 300px;
+    padding: 20px;
+    border-right: 1px solid #dddddd35;
+  }
+  
+  .search-bar input {
+    width: 92%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #e4e6eb;
+    outline: none;
+  }
+  
+  .contact-list {
+    margin-top: 20px;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  /* .contact-item:hover {
+    background-color: #e4e6eb;
+  } */
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .contact-info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .contact-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #bbbbbb;
+  }
