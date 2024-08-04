@@ -1,34 +1,34 @@
-import { useState } from 'react';
-import MessageList from './MessageList';
-import InputArea from './InputArea';
-import './MainChatArea.css';
-import UserInfo from './UserInfo';
+import React, { useState } from 'react';
 
-const MainChatArea = () => {
-  const [messages, setMessages] = useState([
-    { id: 1, text: "I'm thinking of going skiing if the weather's nice", sender: 'Maria', timestamp: '45 minutes ago' },
-    { id: 2, text: "Sounds fun! Let me know", sender: 'You', timestamp: '44 minutes ago' },
-    // Add more initial messages as needed
-  ]);
+const MainChatArea = ({ messages, sendMessage }) => {
+  const [newMessage, setNewMessage] = useState('');
 
-  const addMessage = (text) => {
-    const newMessage = {
-      id: messages.length + 1,
-      text,
-      sender: 'You',
-      timestamp: 'Just now'
-    };
-    setMessages([...messages, newMessage]);
+  const handleSend = () => {
+    if (newMessage.trim()) {
+      sendMessage(newMessage);
+      setNewMessage('');
+    }
   };
 
   return (
-    <>
     <div className="main-chat-area">
-    <UserInfo/>
-      <MessageList messages={messages} />
-      <InputArea onSendMessage={addMessage} />
-    </div> 
-    </>
+      <div className="messages">
+        {messages.map((msg, index) => (
+          <div key={index}>
+            {msg.username ? `${msg.username}: ${msg.text}` : msg.text}
+          </div>
+        ))}
+      </div>
+      <div className="input-area">
+        <input
+          type="text"
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+        />
+        <button onClick={handleSend}>Send</button>
+      </div>
+    </div>
   );
 };
 
